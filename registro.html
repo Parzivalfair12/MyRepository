@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Registro</h1>
+        <form id="registroForm">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono">
+            </div>
+            <div class="form-group">
+                <label for="estrato">Estrato:</label>
+                <input type="number" class="form-control" id="estrato" name="estrato" min="1" max="6" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="grupoSanguineo">Grupo Sanguíneo:</label>
+                <input type="text" class="form-control" id="grupoSanguineo" name="grupoSanguineo">
+            </div>
+            <div class="form-group">
+                <label for="genero">Género:</label>
+                <select class="form-control" id="genero" name="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="actividadesFavoritas">Actividades Favoritas:</label>
+                <textarea class="form-control" id="actividadesFavoritas" name="actividadesFavoritas" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success" id="registrarButton">Registrar</button>
+                <button type="button" class="btn btn-secondary" id="cancelarButton">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("registrarButton").addEventListener("click", function() {
+  
+            const nombre = document.getElementById("nombre").value;
+            const apellidos = document.getElementById("apellidos").value;
+            const correo = document.getElementById("correo").value;
+            const telefono = document.getElementById("telefono").value;
+            const estrato = document.getElementById("estrato").value;
+            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+            const grupoSanguineo = document.getElementById("grupoSanguineo").value;
+            const genero = document.getElementById("genero").value;
+            const actividadesFavoritas = document.getElementById("actividadesFavoritas").value;
+
+            const nombreRegex = /^[A-Za-z\s]+$/;
+            const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            
+            if (!nombreRegex.test(nombre) || !nombreRegex.test(apellidos)) {
+                alert("Por favor, ingresa un nombre y apellidos válidos.");
+                return;
+            }
+
+            if (!correoRegex.test(correo)) {
+                alert("Por favor, ingresa un correo electrónico válido.");
+                return;
+            }
+
+
+            alert("Registro exitoso:\nNombre: " + nombre + "\nApellidos: " + apellidos + "\nCorreo Electrónico: " + correo + "\nTeléfono: " + telefono + "\nEstrato: " + estrato + "\nFecha de Nacimiento: " + fechaNacimiento + "\nGrupo Sanguíneo: " + grupoSanguineo + "\nGénero: " + genero + "\nActividades Favoritas: " + actividadesFavoritas);
+        });
+
+        document.getElementById("cancelarButton").addEventListener("click", function() {
+
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
